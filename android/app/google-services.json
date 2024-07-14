@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1072934486966",
+    "project_id": "bok2-a0acb",
+    "storage_bucket": "bok2-a0acb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072934486966:android:4c61ac4299765dfcb27717",
+        "android_client_info": {
+          "package_name": "com.example.food_sales_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9AfDyCmgx_C5ZOb3mpUBhBJe-seMuWG8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
