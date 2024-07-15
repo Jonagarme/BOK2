@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class RegisterScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
 
+  RegisterScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register'),
+        title: const Text('Register'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -17,7 +19,7 @@ class RegisterScreen extends StatelessWidget {
             child: Column(
               children: [
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Cédula'),
+                  decoration: const InputDecoration(labelText: 'Cédula'),
                   keyboardType: TextInputType.number,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -27,7 +29,7 @@ class RegisterScreen extends StatelessWidget {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Nombre completo'),
+                  decoration: const InputDecoration(labelText: 'Nombre completo'),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Por favor ingrese su nombre completo';
@@ -36,7 +38,7 @@ class RegisterScreen extends StatelessWidget {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Dirección'),
+                  decoration: const InputDecoration(labelText: 'Dirección'),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Por favor ingrese su dirección';
@@ -45,7 +47,7 @@ class RegisterScreen extends StatelessWidget {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Teléfono'),
+                  decoration: const InputDecoration(labelText: 'Teléfono'),
                   keyboardType: TextInputType.phone,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -55,7 +57,7 @@ class RegisterScreen extends StatelessWidget {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Ciudad'),
+                  decoration: const InputDecoration(labelText: 'Ciudad'),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Por favor ingrese su ciudad';
@@ -63,7 +65,7 @@ class RegisterScreen extends StatelessWidget {
                     return null;
                   },
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
@@ -71,8 +73,8 @@ class RegisterScreen extends StatelessWidget {
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: Text('Registro Exitoso'),
-                            content: Text('Su registro ha sido exitoso.'),
+                            title: const Text('Registro Exitoso'),
+                            content: const Text('Su registro ha sido exitoso.'),
                             actions: [
                               TextButton(
                                 onPressed: () {
@@ -81,7 +83,7 @@ class RegisterScreen extends StatelessWidget {
                                   Navigator.of(context)
                                       .pop(); // Regresa a la pantalla de Login
                                 },
-                                child: Text('OK'),
+                                child: const Text('OK'),
                               ),
                             ],
                           );
@@ -89,7 +91,7 @@ class RegisterScreen extends StatelessWidget {
                       );
                     }
                   },
-                  child: Text('Registrar'),
+                  child: const Text('Registrar'),
                 ),
               ],
             ),

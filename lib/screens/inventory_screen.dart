@@ -3,6 +3,8 @@ import '../models/food_item.dart';
 import '../db/database_helper.dart';
 
 class InventoryScreen extends StatefulWidget {
+  const InventoryScreen({super.key});
+
   @override
   _InventoryScreenState createState() => _InventoryScreenState();
 }
@@ -41,7 +43,7 @@ class _InventoryScreenState extends State<InventoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Inventory'),
+        title: const Text('Inventory'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -49,17 +51,17 @@ class _InventoryScreenState extends State<InventoryScreen> {
           children: [
             TextField(
               controller: _nameController,
-              decoration: InputDecoration(labelText: 'Food Name'),
+              decoration: const InputDecoration(labelText: 'Food Name'),
             ),
             TextField(
               controller: _priceController,
-              decoration: InputDecoration(labelText: 'Price'),
+              decoration: const InputDecoration(labelText: 'Price'),
               keyboardType: TextInputType.number,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _addFoodItem,
-              child: Text('Add Food Item'),
+              child: const Text('Add Food Item'),
             ),
             Expanded(
               child: ListView.builder(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../screens/home_screen.dart';
 
 class LoginForm extends StatefulWidget {
-  const LoginForm({Key? key}) : super(key: key);
+  const LoginForm({super.key});
 
   @override
   _LoginFormState createState() => _LoginFormState();
@@ -26,7 +26,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         TextField(
           controller: _passwordController,
           decoration: InputDecoration(
@@ -37,15 +37,15 @@ class _LoginFormState extends State<LoginForm> {
           ),
           obscureText: true,
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         ElevatedButton(
           onPressed: _login,
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.deepOrangeAccent,
-            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-            textStyle: TextStyle(fontSize: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+            textStyle: const TextStyle(fontSize: 16),
           ),
-          child: Text('Login'),
+          child: const Text('Login'),
         ),
       ],
     );
@@ -55,12 +55,12 @@ class _LoginFormState extends State<LoginForm> {
     if (_emailController.text.isNotEmpty && _passwordController.text.isNotEmpty) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => HomeScreen(),
+          builder: (context) => const HomeScreen(),
         ),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please enter email and password')),
+        const SnackBar(content: Text('Please enter email and password')),
       );
     }
   }

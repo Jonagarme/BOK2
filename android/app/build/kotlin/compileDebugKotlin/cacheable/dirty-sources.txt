@@ -1,0 +1,1 @@
+C:\Users\jonag\OneDrive\Documentos\UBE\APP MOBILE\bok2_PROTOTIPO\bok2_PROTOTIPO\bok2\android\app\src\main\kotlin\com\example\bok2\MainActivity.kt

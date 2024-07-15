@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ProductCategoriesScreen extends StatefulWidget {
+  const ProductCategoriesScreen({super.key});
+
   @override
   _ProductCategoriesScreenState createState() =>
       _ProductCategoriesScreenState();
@@ -49,7 +51,7 @@ class _ProductCategoriesScreenState extends State<ProductCategoriesScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Food Menu'),
+        title: const Text('Food Menu'),
         bottom: TabBar(
           controller: _tabController,
           tabs: categories.map((category) => Tab(text: category)).toList(),
