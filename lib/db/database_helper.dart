@@ -12,7 +12,8 @@ class DatabaseHelper {
   Future<List<FoodItem>> getFoodItems() async {
     final querySnapshot = await _foodCollection.get();
     return querySnapshot.docs
-        .map((doc) => FoodItem.fromMap(doc.data() as Map<String, dynamic>, doc.id))
+        .map((doc) =>
+            FoodItem.fromMap(doc.data() as Map<String, dynamic>, doc.id))
         .toList();
   }
 

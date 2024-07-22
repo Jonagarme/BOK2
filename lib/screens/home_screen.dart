@@ -1,3 +1,4 @@
+import 'package:bok2/screens/client_form_screen.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart'; // Importa la pantalla de login
 import 'product_categories_screen.dart';
@@ -56,6 +57,14 @@ class HomeScreen extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => const ProductCategoriesScreen(),
+              ),
+            );
+          } else if (label == 'Customers') {
+            // Navega a la pantalla de crear cliente cuando se presione "Customers"
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ClientFormScreen(),
               ),
             );
           } else {
