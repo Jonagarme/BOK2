@@ -1,10 +1,20 @@
-import 'package:bok2/screens/client_form_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart'; // Importa FirebaseAuth
 import 'login_screen.dart'; // Importa la pantalla de login
-import 'product_categories_screen.dart';
+import 'client_form_screen.dart'; // Importa la pantalla de formulario de clientes
+import 'product_categories_screen.dart'; // Importa la pantalla de categorías de productos
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
+  Future<void> _logout(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => LoginScreen()),
+      (Route<dynamic> route) => false,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +24,7 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
-            onPressed: () {
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => const LoginScreen()),
-                (Route<dynamic> route) => false,
-              );
-            },
+            onPressed: () => _logout(context),
           ),
         ],
       ),

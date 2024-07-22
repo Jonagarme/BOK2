@@ -9,6 +9,9 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
+  // runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -27,7 +30,7 @@ class MyApp extends StatelessWidget {
           secondary: Colors.deepOrangeAccent,
         ),
       ),
-      home: const LoginScreen(),
+      home: LoginScreen(),
     );
   }
 }
