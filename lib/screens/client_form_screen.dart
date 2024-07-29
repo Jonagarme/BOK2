@@ -18,6 +18,11 @@ class _ClientFormScreenState extends State<ClientFormScreen> {
   final _formKey = GlobalKey<FormState>();
   late String _name;
   late String _cedula;
+  late String _phoneNumber;
+  late String _address;
+  late String _city;
+  late String _email;
+  bool _isActive = false;
 
   @override
   void initState() {
@@ -25,9 +30,19 @@ class _ClientFormScreenState extends State<ClientFormScreen> {
     if (widget.client != null) {
       _name = widget.client!.name;
       _cedula = widget.client!.cedula;
+      _phoneNumber = widget.client!.phoneNumber;
+      _address = widget.client!.address;
+      _city = widget.client!.city;
+      _email = widget.client!.email;
+      _isActive = widget.client!.isActive;
     } else {
       _name = '';
       _cedula = '';
+      _phoneNumber = '';
+      _address = '';
+      _city = '';
+      _email = '';
+      _isActive = false;
     }
   }
 
@@ -39,6 +54,11 @@ class _ClientFormScreenState extends State<ClientFormScreen> {
             FirebaseFirestore.instance.collection('clients').doc().id,
         name: _name,
         cedula: _cedula,
+        phoneNumber: _phoneNumber,
+        address: _address,
+        city: _city,
+        email: _email,
+        isActive: _isActive,
         registrationDate: DateTime.now(),
       );
       if (widget.client == null) {
@@ -56,7 +76,7 @@ class _ClientFormScreenState extends State<ClientFormScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            widget.client == null ? 'Crear Cliente' : 'Actualizar Cliente'),
+            widget.client == null ? 'Creacion Cliente' : 'Actualizar Cliente'),
         actions: [
           IconButton(
             icon: const Icon(Icons.list),
@@ -74,11 +94,16 @@ class _ClientFormScreenState extends State<ClientFormScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
-          child: Column(
+          child: ListView(
             children: [
+              const CircleAvatar(
+                radius: 30,
+                child: Icon(Icons.person, size: 40),
+              ),
+              const SizedBox(height: 20),
               TextFormField(
                 initialValue: _name,
-                decoration: const InputDecoration(labelText: 'Nombre'),
+                decoration: const InputDecoration(labelText: 'Nombres'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor ingrese el nombre';
@@ -90,8 +115,47 @@ class _ClientFormScreenState extends State<ClientFormScreen> {
                 },
               ),
               TextFormField(
+                initialValue: _phoneNumber,
+                decoration: const InputDecoration(labelText: 'Numero teléfono'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor ingrese el número de teléfono';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  _phoneNumber = value!;
+                },
+              ),
+              TextFormField(
+                initialValue: _address,
+                decoration: const InputDecoration(labelText: 'Dirección'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor ingrese la dirección';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  _address = value!;
+                },
+              ),
+              TextFormField(
+                initialValue: _city,
+                decoration: const InputDecoration(labelText: 'Ciudad'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor ingrese la ciudad';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  _city = value!;
+                },
+              ),
+              TextFormField(
                 initialValue: _cedula,
-                decoration: const InputDecoration(labelText: 'Cédula'),
+                decoration: const InputDecoration(labelText: 'Cedula'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor ingrese la cédula';
@@ -102,10 +166,32 @@ class _ClientFormScreenState extends State<ClientFormScreen> {
                   _cedula = value!;
                 },
               ),
+              TextFormField(
+                initialValue: _email,
+                decoration: const InputDecoration(labelText: 'Email'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor ingrese el email';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  _email = value!;
+                },
+              ),
+              CheckboxListTile(
+                title: const Text('Usuario Activo'),
+                value: _isActive,
+                onChanged: (value) {
+                  setState(() {
+                    _isActive = value!;
+                  });
+                },
+              ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _saveClient,
-                child: Text(widget.client == null ? 'Crear' : 'Actualizar'),
+                child: Text(widget.client == null ? 'Guardar' : 'Actualizar'),
               ),
             ],
           ),

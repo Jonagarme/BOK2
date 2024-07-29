@@ -1,3 +1,4 @@
+import 'package:bok2/screens/administration_section.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart'; // Importa FirebaseAuth
 import 'login_screen.dart'; // Importa la pantalla de login
@@ -69,6 +70,13 @@ class HomeScreen extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => const ClientFormScreen(),
+              ),
+            );
+          } else if (label == 'Settings') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AdminSectionScreen(),
               ),
             );
           } else {
