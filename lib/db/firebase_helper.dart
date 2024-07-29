@@ -1,9 +1,12 @@
+import 'package:bok2/models/order_model.dart';
+import 'package:bok2/models/product_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/client_model.dart';
 
 class FirebaseHelper {
   final CollectionReference clientsCollection =
       FirebaseFirestore.instance.collection('clients');
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   Future<void> createClient(Client client) async {
     await clientsCollection.doc(client.id).set(client.toMap());
@@ -37,5 +40,45 @@ class FirebaseHelper {
         .map(
             (doc) => Client.fromMap(doc.data() as Map<String, dynamic>, doc.id))
         .toList();
+  }
+
+  // Crear producto
+  Future<void> createProduct(Product product) async {
+    await _db.collection('products').doc(product.id).set(product.toMap());
+  }
+
+  // Actualizar producto
+  Future<void> updateProduct(Product product) async {
+    await _db.collection('products').doc(product.id).update(product.toMap());
+  }
+
+  // Eliminar producto
+  Future<void> deleteProduct(String id) async {
+    await _db.collection('products').doc(id).delete();
+  }
+
+  // Obtener productos
+  Stream<QuerySnapshot> getProducts() {
+    return _db.collection('products').snapshots();
+  }
+
+  // Crear pedido
+  Future<void> createOrder(Orders order) async {
+    await _db.collection('orders').doc(order.id).set(order.toMap());
+  }
+
+  // Actualizar pedido
+  Future<void> updateOrder(Orders order) async {
+    await _db.collection('orders').doc(order.id).update(order.toMap());
+  }
+
+  // Eliminar pedido
+  Future<void> deleteOrder(String id) async {
+    await _db.collection('orders').doc(id).delete();
+  }
+
+  // Obtener pedidos
+  Stream<QuerySnapshot> getOrders() {
+    return _db.collection('orders').snapshots();
   }
 }
