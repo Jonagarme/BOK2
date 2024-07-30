@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
             _buildOption(context, Icons.payment, 'Payments'),
             _buildOption(context, Icons.local_offer, 'Offers'),
             _buildOption(context, Icons.people, 'Customers'),
-            _buildOption(context, Icons.settings, 'Settings'),
+            _buildOption(context, Icons.settings, 'Administracion'),
           ],
         ),
       ),
@@ -72,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                 builder: (context) => const ClientFormScreen(),
               ),
             );
-          } else if (label == 'Settings') {
+          } else if (label == 'Administracion') {
             Navigator.push(
               context,
               MaterialPageRoute(

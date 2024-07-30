@@ -27,6 +27,22 @@ class _ProductCategoriesScreenState extends State<ProductCategoriesScreen>
     "Postres": ["Tiramisú", "Helado de Vainilla", "Tarta de Manzana"],
     "Bebidas": ["Coca Cola", "Jugo de Naranja", "Café Espresso"]
   };
+
+  final Map<String, String> productImages = {
+    "Ensalada César": "assets/images/ensalada_cesar.jpg",
+    "Sopa de Tomate": "assets/images/sopa_tomate.jpg",
+    "Bruschetta": "assets/images/bruschetta.jpg",
+    "Pizza Margherita": "assets/images/pizza.jpg",
+    "Pasta Carbonara": "assets/images/pasta_carbonara.jpg",
+    "Pollo Asado": "assets/images/pollo_asado.jpg",
+    "Tiramisú": "assets/images/tiramisu.jpg",
+    "Helado de Vainilla": "assets/images/helado_vainilla.jpg",
+    "Tarta de Manzana": "assets/images/tarta_manzana.jpg",
+    "Coca Cola": "assets/images/coca_cola.jpg",
+    "Jugo de Naranja": "assets/images/jugo_naranja.jpg",
+    "Café Espresso": "assets/images/cafe.jpg",
+  };
+
   List<String> currentProducts = [];
 
   @override
@@ -63,8 +79,17 @@ class _ProductCategoriesScreenState extends State<ProductCategoriesScreen>
           return ListView.builder(
             itemCount: currentProducts.length,
             itemBuilder: (context, index) {
+              final productName = currentProducts[index];
+              final productImage = productImages[productName]!;
               return ListTile(
-                title: Text(currentProducts[index]),
+                contentPadding: const EdgeInsets.all(8.0),
+                leading: Image.asset(
+                  productImage,
+                  width: 50,
+                  height: 50,
+                  fit: BoxFit.cover,
+                ),
+                title: Text(productName),
               );
             },
           );
